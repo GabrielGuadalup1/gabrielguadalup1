@@ -1,6 +1,6 @@
 ### Olá, Sou o Gabriel Guadalup! 👋 Bem-vindo ao meu GitHub!
 
-Me chamo Gabriel Guadalup, tenho 25 anos e sou natural de Macapá. Concluí o ensino médio no IFAP, com o curso técnico. Atualmente, estou cursando Análise e Desenvolvimento de Sistemas na Estacio. Sou apaixonado por tecnologia e cibersegurança, e também sou entusiasta da produção audiovisual, marketing digital e investimento. Estou sempre em busca de novos aprendizados e desafios na área de desenvolvimento e inovação.
+Me chamo Gabriel Guadalup, tenho 25 anos e sou natural de Macapá. Concluí o ensino médio no IFAP, com o curso técnico. Atualmente, estou cursando Análise e Desenvolvimento de Sistemas. Estou sempre em busca de novos aprendizados e desafios na área de tecnoligia, desenvolvimento e inovação.
 
 ## 📚 Tecnologias e Ferramentas em Estudo 👇🚀
 <div style="display: inline_block"><br>
