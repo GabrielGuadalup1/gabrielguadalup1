@@ -1,66 +1,77 @@
 <div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/main/dark.svg?v=1">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/main/light.svg?v=1">
-    <img alt="Gabriel Guadalup - Terminal" src="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/main/dark.svg?v=1" width="100%">
-  </picture>
 
-<br /><br />
+  <!-- BANNER SVG ANIMADO -->
+  <img src="./dark.svg" alt="Gabriel Guadalup — Profile Terminal Banner" width="100%" />
 
-<!-- CONTATO -->
-<p>
-  <a href="https://www.linkedin.com/in/gabriel-guadalup-78351329a" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-Conectar-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
-  </a>
+  <br /><br />
+
+  <!-- BADGES / SOCIAL -->
   <a href="mailto:gabrielguadalup.dev@gmail.com">
-    <img src="https://img.shields.io/badge/E--mail-Falar_comigo-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="E-mail" />
+    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail Badge" />
   </a>
-  <a href="https://instagram.com/Gguadalup" target="_blank">
-    <img src="https://img.shields.io/badge/Instagram-Seguir-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" />
+  <a href="https://linkedin.com/in/gabriel-guadalup-78351329a">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge" />
   </a>
-</p>
+  <a href="https://github.com/GabrielGuadalup1">
+    <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Badge" />
+  </a>
 
 </div>
 
 ---
 
-## 👩‍💻 Sobre mim
+### 👨‍💻 Sobre Mim
 
-Graduando em **Inteligência Artificial** pelo Instituto Federal do Amapá (IFAP - Campus Macapá). 
+Sou **Gabriel Guadalup**, Graduando em **Inteligência Artificial** pelo Instituto Federal do Amapá (IFAP) em Macapá. 
 
-Atualmente focado em construir uma base sólida em programação, estruturas de dados e fundamentos de IA, utilizando este espaço para registrar projetos acadêmicos e soluções próprias em Python.
-
-- 🔭 **Estudando agora:** Estruturas de Dados, Programação Orientada a Objetos (POO), Cálculo e Arquitetura de Computadores.
-- 🛠️ **Praticando:** Python, lógica de programação, automações e versionamento com Git/GitHub.
-- 🤝 **Quero colaborar em:** Projetos open-source em Python, análise de dados e aplicações com IA.
-- 💼 **Aberto a:** Oportunidades de estágio e projetos na área de tecnologia.
+🔭 Estudando agora: Estruturas de Dados, Programação Orientada a Objetos (POO), Cálculo e Arquitetura de Computadores.
+🛠️ Praticando: Python, lógica de programação, automações e versionamento com Git/GitHub.
+🤝 Quero colaborar em: Projetos open-source em Python, análise de dados e aplicações com IA.
+💼 Aberto a: Oportunidades de estágio e projetos na área de tecnologia.
 
 ---
 
-## 🛠️ Linguagens e Ferramentas
+### 🛠️ Linguagens e Ferramentas
 
 <div align="center">
-  <img src="https://skillicons.dev/icons?i=python,html,css,js,ts,git,github,vscode&theme=dark" alt="Python, HTML5, CSS3, JavaScript, TypeScript, Git, GitHub, VS Code" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="40" alt="python logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" alt="javascript logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" height="40" alt="typescript logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="40" alt="html5 logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height="40" alt="css3 logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" height="40" alt="git logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" height="40" alt="vscode logo"  />
 </div>
 
 ---
 
-## 🎯 Foco atual
+### 📊 Estatísticas e Atividade
 
-```yaml
-Aprendendo:
-  - Estruturas de dados lineares (listas, pilhas, filas)
-  - Programação orientada a objetos (POO)
-  - Cálculo aplicado a IA
+<div align="center">
 
-Construindo:
-  - Projetos e exercícios do curso no IFAP
-  - Automações e scripts práticos em Python
+  <!-- GITHUB STREAK STATS -->
+  <a href="https://git.io/streak-stats">
+    <img src="https://streak-stats.demolab.com?user=GabrielGuadalup1&theme=hacker&hide_border=true&border_radius=10&locale=pt_BR&short_numbers=true&date_format=j%20M%5B%20Y%5D&mode=weekly" alt="GitHub Streak" />
+  </a>
 
-Próximos passos:
-  - Publicar repositórios próprios com documentação clara (README)
-  - Explorar bibliotecas de Data Science (Pandas, NumPy)
-```
+  <br /><br />
+
+  <!-- GITHUB STATS & TOP LANGS -->
+  <img src="https://github-readme-stats.vercel.app/api?username=GabrielGuadalup1&show_icons=true&theme=cyberpunk&hide_border=true&locale=pt-br" alt="GitHub Stats" height="165" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=GabrielGuadalup1&layout=compact&theme=cyberpunk&hide_border=true&locale=pt-br" alt="Top Languages" height="165" />
+
+  <br /><br />
+
+  <!-- CONTADOR DE VISITAS -->
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=GabrielGuadalup1.GabrielGuadalup1" alt="Contador de Visitas" />
+
+</div>
+
+---
+
+<div align="center">
+  <p><i>"Aprendendo em público e construindo soluções."</i> 🚀</p>
+</div>
   
 ###
 
@@ -71,3 +82,4 @@ Próximos passos:
 </picture>
 
 ###
+
