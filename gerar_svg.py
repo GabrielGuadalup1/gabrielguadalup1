@@ -48,20 +48,16 @@ INFO_ROWS = [
 ]
 
 
-def gerar_pontos_linha(p1, p2, count, jitter=2.5):
-    """Gera pontos distribuídos ao longo de uma linha com espessura."""
+def gerar_pontos_linha(p1, p2, count):
+    """Gera pontos alinhados ao longo de uma reta."""
     t = np.linspace(0, 1, count)
     x = p1[0] + t * (p2[0] - p1[0])
     y = p1[1] + t * (p2[1] - p1[1])
-    if jitter > 0:
-        np.random.seed(42)
-        x += np.random.uniform(-jitter, jitter, count)
-        y += np.random.uniform(-jitter, jitter, count)
     return np.column_stack((x, y))
 
 
 def gerar_pontos_terminal(N):
-    """Gera N pontos organizados no formato da logo do Terminal (>_)."""
+    """Gera N pontos no formato da logo do Terminal (>_)."""
     cx, cy = OFFSET_X + 150, OFFSET_Y + 180
     n1 = N // 3
     n2 = N // 3
@@ -74,7 +70,7 @@ def gerar_pontos_terminal(N):
 
 
 def gerar_pontos_codigo(N):
-    """Gera N pontos organizados no formato da tag de código (</>)."""
+    """Gera N pontos no formato da tag de código (</>)."""
     cx, cy = OFFSET_X + 150, OFFSET_Y + 180
     n1 = N // 5
     n2 = N // 5
@@ -91,7 +87,7 @@ def gerar_pontos_codigo(N):
 
 
 def ordenar_pontos(pts):
-    """Ordena pontos para suavizar as trajetórias das partículas durante a transição."""
+    """Ordena pontos espacialmente para suavizar trajetórias."""
     cx, cy = np.mean(pts[:, 0]), np.mean(pts[:, 1])
     angles = np.arctan2(pts[:, 1] - cy, pts[:, 0] - cx)
     radii = np.hypot(pts[:, 0] - cx, pts[:, 1] - cy)
@@ -99,10 +95,10 @@ def ordenar_pontos(pts):
     return pts[indices]
 
 
-def gerar_morfismo_particulas_real(matriz, config_tema):
+def gerar_morfismo_interativo(matriz, config_tema):
     """
-    Calcula o vetor de deslocamento individual de cada partícula para animar:
-    Terminal (>_) -> Código (</>) -> Rosto -> Loop.
+    Animação de partículas com transição e interações:
+    Terminal (>_) -> Dispersão -> Código (</>) -> Dispersão -> Rosto -> Loop.
     """
     y_idx, x_idx = np.where(matriz > 0)
     if len(x_idx) == 0:
@@ -114,31 +110,48 @@ def gerar_morfismo_particulas_real(matriz, config_tema):
     term_pts = gerar_pontos_terminal(N)
     code_pts = gerar_pontos_codigo(N)
 
-    # Ordena pontos para criar um movimento limpo
+    # Ordenação dos pontos
     face_pts = ordenar_pontos(face_pts)
     term_pts = ordenar_pontos(term_pts)
     code_pts = ordenar_pontos(code_pts)
 
+    # Ponto intermediário de dispersão (interação entre Terminal e Código)
+    np.random.seed(123)
+    scatter_1_x = (term_pts[:, 0] + code_pts[:, 0]) / 2 + np.random.uniform(-35, 35, N)
+    scatter_1_y = (term_pts[:, 1] + code_pts[:, 1]) / 2 + np.random.uniform(-35, 35, N)
+
+    # Ponto intermediário de dispersão (interação entre Código e Rosto)
+    scatter_2_x = (code_pts[:, 0] + face_pts[:, 0]) / 2 + np.random.uniform(-30, 30, N)
+    scatter_2_y = (code_pts[:, 1] + face_pts[:, 1]) / 2 + np.random.uniform(-30, 30, N)
+
     particles_svg = []
-    # Amostragem para manter o SVG leve e super fluido no GitHub
-    step = 2 if N > 2000 else 1
+    step = 2 if N > 2200 else 1
 
     for i in range(0, N, step):
         xf, yf = int(face_pts[i, 0]), int(face_pts[i, 1])
 
-        # Calcula desvios (offsets) de posição
-        dx_t = int(term_pts[i, 0] - xf)
-        dy_t = int(term_pts[i, 1] - yf)
+        # Deslocamentos relativos à posição final do rosto
+        dt_x, dt_y = int(term_pts[i, 0] - xf), int(term_pts[i, 1] - yf)
+        s1_x, s1_y = int(scatter_1_x[i] - xf), int(scatter_1_y[i] - yf)
+        dc_x, dc_y = int(code_pts[i, 0] - xf), int(code_pts[i, 1] - yf)
+        s2_x, s2_y = int(scatter_2_x[i] - xf), int(scatter_2_y[i] - yf)
 
-        dx_c = int(code_pts[i, 0] - xf)
-        dy_c = int(code_pts[i, 1] - yf)
+        # Ciclo de animação:
+        # 1. Terminal (>_) estático
+        # 2. Dispersão + Reorganização -> Código (</>)
+        # 3. Código (</>) estático
+        # 4. Dispersão + Encaixe -> Rosto
+        # 5. Rosto estático
+        # 6. Retorno ao Terminal (>_)
+        values_str = f"{dt_x} {dt_y}; {dt_x} {dt_y}; {s1_x} {s1_y}; {dc_x} {dc_y}; {dc_x} {dc_y}; {s2_x} {s2_y}; 0 0; 0 0; {dt_x} {dt_y}"
+        key_times_str = "0.0; 0.20; 0.28; 0.38; 0.58; 0.66; 0.76; 0.92; 1.0"
 
         particle = f"""    <path d="M{xf},{yf}h1">
       <animateTransform attributeName="transform" type="translate"
-                        values="{dx_t} {dy_t}; {dx_t} {dy_t}; {dx_c} {dy_c}; {dx_c} {dy_c}; 0 0; 0 0; {dx_t} {dy_t}"
-                        keyTimes="0.0; 0.22; 0.35; 0.57; 0.70; 0.88; 1.0"
-                        dur="13s" repeatCount="indefinite"
-                        calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1; 0.4 0 0.2 1; 0.4 0 0.2 1; 0.4 0 0.2 1; 0.4 0 0.2 1"/>
+                        values="{values_str}"
+                        keyTimes="{key_times_str}"
+                        dur="14s" repeatCount="indefinite"
+                        calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1; 0.4 0 0.2 1; 0.4 0 0.2 1; 0.4 0 0.2 1; 0.4 0 0.2 1; 0.4 0 0.2 1; 0.4 0 0.2 1"/>
     </path>"""
         particles_svg.append(particle)
 
@@ -169,7 +182,7 @@ def gerar_linhas_info_animadas(config_tema, start_y=162, spacing=23):
 
 
 def gerar_svg_tema(matriz, config_tema):
-    rosto_morfismo = gerar_morfismo_particulas_real(matriz, config_tema)
+    rosto_morfismo = gerar_morfismo_interativo(matriz, config_tema)
     info_svg = gerar_linhas_info_animadas(config_tema)
 
     svg_content = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{CANVAS_W}" height="{CANVAS_H}" viewBox="0 0 {CANVAS_W} {CANVAS_H}" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" role="img" aria-label="Gabriel Guadalup — profile.sh --live">
