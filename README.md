@@ -53,7 +53,7 @@ Sou **Gabriel Guadalup**, um profissional com base sólida em exatas (Engenharia
 <div align="center">
 
   <!-- 1. STREAK STATS (Largo e no tema Tokyonight) -->
-  <a href="https://git.io/streak-stats">
+ <a href="https://git.io/streak-stats">
   <img src="https://streak-stats.demolab.com?user=GabrielGuadalup1&theme=tokyonight&hide_border=true&border_radius=5&locale=pt_BR" alt="GitHub Streak" width="100%" />
 </a>
 
