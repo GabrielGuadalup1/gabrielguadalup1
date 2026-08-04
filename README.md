@@ -52,19 +52,21 @@ Sou **Gabriel Guadalup**, um profissional com base sólida em exatas (Engenharia
 
 <div align="center">
 
-  <!-- 1. STREAK STATS (Largo e no tema Tokyonight) -->
- <a href="https://git.io/streak-stats">
-  <img src="https://streak-stats.demolab.com?user=GabrielGuadalup1&theme=tokyonight&hide_border=true&border_radius=5&locale=pt_BR" alt="GitHub Streak" width="100%" />
-</a>
+  <!-- 1. STREAK STATS (Servidor espelho com tema Tokyonight) -->
+  <a href="https://github.com/DenverCoder1/github-readme-streak-stats">
+    <img src="https://github-readme-streak-stats.herokuapp.com?user=GabrielGuadalup1&theme=tokyonight&hide_border=true&border_radius=5" alt="GitHub Streak" width="100%" />
+  </a>
 
   <br /><br />
 
-  <!-- 2. GITHUB STATS + MOST USED LANGUAGES (Lado a lado, tema Tokyonight) -->
-  <img src="https://github-readme-stats-sigma-five.vercel.app/api?username=GabrielGuadalup1&show_icons=true&theme=tokyonight&hide_border=true" alt="Gabriel Guadalup's GitHub Stats" width="49%" />
-  <img src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=GabrielGuadalup1&layout=compact&theme=tokyonight&hide_border=true" alt="Most Used Languages" width="49%" />
+  <!-- 2. GITHUB STATS + MOST USED LANGUAGES (Lado a lado) -->
+  <img src="https://github-readme-stats-fast.vercel.app/api?username=GabrielGuadalup1&show_icons=true&theme=tokyonight&hide_border=true" alt="Gabriel Guadalup's GitHub Stats" width="49%" />
+  <img src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=GabrielGuadalup1&layout=compact&theme=tokyonight&hide_border=true" alt="Most Used Languages" width="49%" />
 
 </div>
+
   <br /><br />
+  
 <div align="center">
   <!-- CONTADOR DE VISITAS CENTRADO -->
   <img src="https://visitor-badge.laobi.icu/badge?page_id=GabrielGuadalup1.GabrielGuadalup1" alt="Contador de Visitas" />
