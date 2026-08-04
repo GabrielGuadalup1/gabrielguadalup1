@@ -57,8 +57,17 @@ Sou **Gabriel Guadalup**, Graduando em **Inteligência Artificial** pelo Institu
   <br /><br />
 
   <!-- GITHUB STATS & TOP LANGS -->
-  <img src="https://github-readme-stats.vercel.app/api?username=GabrielGuadalup1&show_icons=true&theme=cyberpunk&hide_border=true&locale=pt-br" alt="GitHub Stats" height="165" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=GabrielGuadalup1&layout=compact&theme=cyberpunk&hide_border=true&locale=pt-br" alt="Top Languages" height="165" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=GabrielGuadalup1&theme=chartreuse_dark" alt="Profile Details" width="100%" />
+
+  <br /><br />
+
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=GabrielGuadalup1&theme=chartreuse_dark" width="48%" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=GabrielGuadalup1&theme=chartreuse_dark" width="48%" />
+
+  <br /><br />
+
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=GabrielGuadalup1&theme=chartreuse_dark" width="48%" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=GabrielGuadalup1&theme=chartreuse_dark&utcOffset=-3" width="48%" />
 
   <br /><br />
 
