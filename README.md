@@ -1,8 +1,8 @@
 <div align="center">
 
-<!-- BANNER PRINCIPAL (MODO ESCURO E CLARO NATIVO DO GITHUB) -->
-<img src="dark.svg#gh-dark-mode-only" alt="Gabriel Guadalup - Terminal" width="100%">
-<img src="light.svg#gh-light-mode-only" alt="Gabriel Guadalup - Terminal" width="100%">
+<!-- BANNER PRINCIPAL (SINTAXE NATIVA DO GITHUB PARA DARK/LIGHT) -->
+![Gabriel Guadalup - Dark](dark.svg#gh-dark-mode-only)
+![Gabriel Guadalup - Light](light.svg#gh-light-mode-only)
 
 <br /><br />
 
@@ -25,7 +25,7 @@
 
 ## 👩‍💻 Sobre mim
 
-Engenheiro Civil de formação e graduando em **Inteligência Artificial** pelo Instituto Federal do Amapá (IFAP - Campus Macapá). 
+Graduando em **Inteligência Artificial** pelo Instituto Federal do Amapá (IFAP - Campus Macapá). 
 
 Atualmente focado em construir uma base sólida em programação, estruturas de dados e fundamentos de IA, utilizando este espaço para registrar projetos acadêmicos e soluções próprias em Python.
 
