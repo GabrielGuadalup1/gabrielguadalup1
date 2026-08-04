@@ -2,7 +2,7 @@ import numpy as np
 
 # Configurações do Canvas e Posição do Retrato
 CANVAS_W, CANVAS_H = 1180, 610
-OFFSET_X, OFFSET_Y = 86, 150
+OFFSET_X, OFFSET_Y = 86, 135
 
 # Cores por tema
 THEMES = {
@@ -48,8 +48,85 @@ INFO_ROWS = [
 ]
 
 
+def criar_matriz_terminal(h, w):
+    """Gera uma matriz de pontos nítidos para o símbolo do Terminal '>_'."""
+    mat = np.zeros((h, w), dtype=int)
+    cy, cx = h // 2, w // 2 - 15
+    size = 40
+    thickness = 8
+
+    # Desenha '>'
+    for t in range(-size, size):
+        y = cy + t
+        x = cx + (size - abs(t))
+        if 0 <= y < h:
+            for dx in range(-thickness, thickness):
+                for dy in range(-2, 3):
+                    if 0 <= x + dx < w and 0 <= y + dy < h:
+                        mat[y + dy, x + dx] = 1
+
+    # Desenha '_'
+    start_x = cx + 25
+    end_x = cx + 75
+    y_line = cy + 32
+    for x in range(start_x, end_x):
+        for dy in range(-4, 5):
+            if 0 <= y_line + dy < h and 0 <= x < w:
+                mat[y_line + dy, x] = 1
+
+    # Aplica padrão de pontos (grid dither)
+    mask_grid = np.zeros((h, w), dtype=int)
+    mask_grid[::2, ::2] = 1
+    return mat * mask_grid
+
+
+def criar_matriz_codigo(h, w):
+    """Gera uma matriz de pontos nítidos para o símbolo de código '</>'."""
+    mat = np.zeros((h, w), dtype=int)
+    cy, cx = h // 2, w // 2
+    size = 40
+    thickness = 7
+
+    # 1. '<'
+    cx_left = cx - 50
+    for t in range(-size, size):
+        y = cy + t
+        x = cx_left - (size - abs(t))
+        if 0 <= y < h:
+            for dx in range(-thickness, thickness):
+                for dy in range(-2, 3):
+                    if 0 <= x + dx < w and 0 <= y + dy < h:
+                        mat[y + dy, x + dx] = 1
+
+    # 2. '/'
+    for t in range(-size - 10, size + 10):
+        y = cy + t
+        x = cx - int(t * 0.35)
+        if 0 <= y < h:
+            for dx in range(-thickness, thickness):
+                for dy in range(-2, 3):
+                    if 0 <= x + dx < w and 0 <= y + dy < h:
+                        mat[y + dy, x + dx] = 1
+
+    # 3. '>'
+    cx_right = cx + 50
+    for t in range(-size, size):
+        y = cy + t
+        x = cx_right + (size - abs(t))
+        if 0 <= y < h:
+            for dx in range(-thickness, thickness):
+                for dy in range(-2, 3):
+                    if 0 <= x + dx < w and 0 <= y + dy < h:
+                        mat[y + dy, x + dx] = 1
+
+    # Aplica padrão de pontos (grid dither)
+    mask_grid = np.zeros((h, w), dtype=int)
+    mask_grid[::2, ::2] = 1
+    return mat * mask_grid
+
+
 def matriz_para_path_d(matriz, offset_x, offset_y):
-    """Converte a matriz da sua foto em linhas vetoriais perfeitas."""
+    """Converte a matriz em linhas vetoriais perfeitas."""
     h, w = matriz.shape
     segments = []
 
@@ -98,7 +175,14 @@ def gerar_linhas_info_animadas(config_tema, start_y=162, spacing=23):
 
 
 def gerar_svg_tema(matriz, config_tema):
-    face_path = matriz_para_path_d(matriz, OFFSET_X, OFFSET_Y)
+    h, w = matriz.shape
+    mat_term = criar_matriz_terminal(h, w)
+    mat_code = criar_matriz_codigo(h, w)
+
+    path_term = matriz_para_path_d(mat_term, OFFSET_X, OFFSET_Y)
+    path_code = matriz_para_path_d(mat_code, OFFSET_X, OFFSET_Y)
+    path_face = matriz_para_path_d(matriz, OFFSET_X, OFFSET_Y)
+
     info_svg = gerar_linhas_info_animadas(config_tema)
 
     svg_content = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{CANVAS_W}" height="{CANVAS_H}" viewBox="0 0 {CANVAS_W} {CANVAS_H}" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" role="img" aria-label="Gabriel Guadalup — profile.sh --live">
@@ -133,18 +217,18 @@ def gerar_svg_tema(matriz, config_tema):
     <rect x="36" y="84" width="400" height="492" rx="10" fill="{config_tema['bg']}" stroke="rgba(34,211,238,0.35)"/>
 
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1; 1; 0; 0" keyTimes="0.0; 0.08; 0.25; 0.30; 1.0" dur="12s" repeatCount="indefinite"/>
-      <path d="M 180 270 L 225 310 L 180 350 M 235 350 L 285 350" fill="none" stroke="{config_tema['dot_color']}" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow3)"/>
+      <animate attributeName="opacity" values="0; 1; 1; 0; 0" keyTimes="0.0; 0.05; 0.28; 0.33; 1.0" dur="12s" repeatCount="indefinite"/>
+      <path d="{path_term}" stroke="{config_tema['dot_color']}" stroke-width="1" shape-rendering="crispEdges"/>
     </g>
 
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 0; 1; 1; 0; 0" keyTimes="0.0; 0.30; 0.38; 0.55; 0.60; 1.0" dur="12s" repeatCount="indefinite"/>
-      <path d="M 180 290 L 145 320 L 180 350 M 225 280 L 195 360 M 240 290 L 275 320 L 240 350" fill="none" stroke="{config_tema['chrome']}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow3)"/>
+      <animate attributeName="opacity" values="0; 0; 1; 1; 0; 0" keyTimes="0.0; 0.33; 0.38; 0.61; 0.66; 1.0" dur="12s" repeatCount="indefinite"/>
+      <path d="{path_code}" stroke="{config_tema['chrome']}" stroke-width="1" shape-rendering="crispEdges"/>
     </g>
 
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0.0; 0.60; 0.68; 0.95; 1.0" dur="12s" repeatCount="indefinite"/>
-      <path d="{face_path}" stroke="{config_tema['dot_color']}" stroke-width="1" shape-rendering="crispEdges"/>
+      <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0.0; 0.66; 0.71; 0.95; 1.0" dur="12s" repeatCount="indefinite"/>
+      <path d="{path_face}" stroke="{config_tema['dot_color']}" stroke-width="1" shape-rendering="crispEdges"/>
     </g>
 
     <text x="470" y="106" font-size="13" letter-spacing="2" fill="{config_tema['chrome']}" filter="url(#txtGlow)">SYSTEM.INFO</text>
