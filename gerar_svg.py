@@ -1,8 +1,8 @@
 import numpy as np
 
-# Configurações do Canvas
+# Configurações do Canvas e Posição do Retrato
 CANVAS_W, CANVAS_H = 1180, 610
-OFFSET_X, OFFSET_Y = 85, 130
+OFFSET_X, OFFSET_Y = 86, 150
 
 # Cores e configurações por tema
 THEMES = {
@@ -15,7 +15,7 @@ THEMES = {
         "text_main": "#F8FAFC",
         "dot_color": "#A78BFA",
         "file_out": "dark.svg",
-        "gid": "accent_dark"
+        "gid": "accent_dark",
     },
     "light": {
         "bg": "#F8FAFC",
@@ -26,8 +26,8 @@ THEMES = {
         "text_main": "#0F172A",
         "dot_color": "#7C3AED",
         "file_out": "light.svg",
-        "gid": "accent_light"
-    }
+        "gid": "accent_light",
+    },
 }
 
 # Dados do Painel SYSTEM.INFO
@@ -44,56 +44,47 @@ INFO_ROWS = [
     ("Core.AI", "NumPy, Pandas, Scikit-Learn"),
     ("Grid.Mail", "gabrielguadalup.dev@gmail.com"),
     ("Grid.LinkedIn", "gabriel-guadalup-78351329a"),
-    ("Grid.GitHub", "@GabrielGuadalup1")
+    ("Grid.GitHub", "@GabrielGuadalup1"),
 ]
 
 
-def gerar_particulas_rosto_animadas(matriz, offset_x, offset_y, color, num_batches=22):
-    """
-    Divide a foto do rosto em lotes e cria a animação de entrada
-    progressiva das partículas em SVG puro (SMIL).
-    """
-    y_indices, x_indices = np.where(matriz == 1)
-    if len(x_indices) == 0:
-        return ""
+def matriz_para_path_d(matriz, offset_x, offset_y):
+    """Converte a matriz de pontos em rotas <path d="..."> contínuas."""
+    h, w = matriz.shape
+    segments = []
 
-    # Embaralha os índices de forma fixa para criar um efeito orgânico de montagem
-    np.random.seed(42)
-    perm = np.random.permutation(len(x_indices))
-    x_shuffled = x_indices[perm] + offset_x
-    y_shuffled = y_indices[perm] + offset_y
+    for y in range(h):
+        in_run = False
+        run_start = 0
+        for x in range(w):
+            if matriz[y, x] > 0:
+                if not in_run:
+                    in_run = True
+                    run_start = x
+            else:
+                if in_run:
+                    in_run = False
+                    px_x = offset_x + run_start
+                    px_y = offset_y + y
+                    run_len = x - run_start
+                    segments.append(f"M{px_x},{px_y}h{run_len}")
+        if in_run:
+            px_x = offset_x + run_start
+            px_y = offset_y + y
+            run_len = w - run_start
+            segments.append(f"M{px_x},{px_y}h{run_len}")
 
-    batches_x = np.array_split(x_shuffled, num_batches)
-    batches_y = np.array_split(y_shuffled, num_batches)
-
-    svg_groups = []
-    for i in range(num_batches):
-        bx = batches_x[i]
-        by = batches_y[i]
-        if len(bx) == 0:
-            continue
-
-        begin_time = 0.20 + (i * 0.04)
-        path_segments = [f"M{x},{y}h1" for x, y in zip(bx, by)]
-        path_d = " ".join(path_segments)
-
-        group_svg = f"""    <g opacity="0" fill="{color}" shape-rendering="crispEdges">
-      <animate attributeName="opacity" values="0;1" dur="0.8s" begin="{begin_time:.2f}s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines=".4 0 .2 1"/>
-      <path d="{path_d}v1h-1z" />
-    </g>"""
-        svg_groups.append(group_svg)
-
-    return "\n".join(svg_groups)
+    return " ".join(segments)
 
 
 def gerar_linhas_info_animadas(config_tema, start_y=162, spacing=23):
     """Gera os textos da direita surgindo linha por linha."""
     rows_svg = []
-    begin_base = 0.90
+    begin_base = 0.50
 
     for i, (label, val) in enumerate(INFO_ROWS):
         y = start_y + (i * spacing)
-        begin_time = begin_base + (i * 0.12)
+        begin_time = begin_base + (i * 0.08)
         val_xml = val.replace("&", "&amp;")
 
         row_str = f"""    <g opacity="0">
@@ -107,7 +98,7 @@ def gerar_linhas_info_animadas(config_tema, start_y=162, spacing=23):
 
 
 def gerar_svg_tema(matriz, config_tema):
-    rosto_svg = gerar_particulas_rosto_animadas(matriz, OFFSET_X, OFFSET_Y, config_tema["dot_color"])
+    path_d = matriz_para_path_d(matriz, OFFSET_X, OFFSET_Y)
     info_svg = gerar_linhas_info_animadas(config_tema)
 
     svg_content = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{CANVAS_W}" height="{CANVAS_H}" viewBox="0 0 {CANVAS_W} {CANVAS_H}" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" role="img" aria-label="Gabriel Guadalup — profile.sh --live">
@@ -141,14 +132,17 @@ def gerar_svg_tema(matriz, config_tema):
     <rect x="36" y="84" width="400" height="492" rx="10" fill="none" stroke="{config_tema['chrome']}" stroke-width="2" opacity="0.45" filter="url(#glow3)"/>
     <rect x="36" y="84" width="400" height="492" rx="10" fill="{config_tema['bg']}" stroke="rgba(34,211,238,0.35)"/>
 
-    {rosto_svg}
+    <g opacity="0">
+      <animate attributeName="opacity" from="0" to="1" dur="0.8s" begin="0.1s" fill="freeze"/>
+      <path d="{path_d}" stroke="{config_tema['dot_color']}" stroke-width="1" shape-rendering="crispEdges"/>
+    </g>
 
     <text x="470" y="106" font-size="13" letter-spacing="2" fill="{config_tema['chrome']}" filter="url(#txtGlow)">SYSTEM.INFO</text>
     <line x1="566" y1="102" x2="1061" y2="102" stroke="rgba(255,255,255,0.10)"/>
     <text x="1125" y="106" text-anchor="end" font-size="12" fill="#F87171" font-weight="700"><tspan>&#9679;</tspan> LIVE<animate attributeName="opacity" values="1;0.25;1" dur="1.6s" repeatCount="indefinite"/></text>
 
     <g opacity="0">
-      <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0.6s" fill="freeze"/>
+      <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0.4s" fill="freeze"/>
       <rect x="470" y="122" width="280" height="20" rx="4" fill="#4C1D95"/>
       <text x="479" y="136" font-size="13" font-weight="700" fill="#E9D5FF">gabrielguadalup.dev@gmail.com</text>
       <line x1="760" y1="130" x2="1125" y2="130" stroke="rgba(255,255,255,0.10)"/>
@@ -157,7 +151,7 @@ def gerar_svg_tema(matriz, config_tema):
     {info_svg}
 
     <g opacity="0">
-      <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="2.60s" fill="freeze"/>
+      <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="1.80s" fill="freeze"/>
       <text x="470" y="550" font-size="14" fill="#94A3B8">&#9656; Aprendendo em publico. Projetos abaixo no README &#8595; <tspan fill="{config_tema['chrome']}">&#9608;<animate attributeName="fill-opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/></tspan></text>
     </g>
   </g>
