@@ -53,14 +53,9 @@ Sou **Gabriel Guadalup**, um profissional com base sólida em exatas (Engenharia
 <div align="center">
 
   <!-- 1. STREAK STATS (Largo e no tema Tokyonight) -->
-  <!-- 1. STREAK STATS (Versão Estável com Fallback) -->
-  <img src="https://streak-stats.demolab.com?user=GabrielGuadalup1&theme=tokyonight&hide_border=true&border_radius=5&date_format=j%20M%5B%20Y%5D" alt="GitHub Streak" width="100%" onerror="this.onerror=null; this.src='https://github-readme-streak-stats.herokuapp.com?user=GabrielGuadalup1&theme=tokyonight&hide_border=true';" />
-
-  <br /><br />
-
-  <!-- 2. STATS + MOST USED LANGUAGES (Instância Vercel sem Rate Limit) -->
-  <img src="https://github-readme-stats-fast.vercel.app/api?username=GabrielGuadalup1&show_icons=true&theme=tokyonight&hide_border=true" alt="Gabriel Guadalup's GitHub Stats" width="49%" />
-  <img src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=GabrielGuadalup1&layout=compact&theme=tokyonight&hide_border=true" alt="Most Used Languages" width="49%" />
+  <a href="https://git.io/streak-stats">
+  <img src="https://streak-stats.demolab.com?user=GabrielGuadalup1&theme=tokyonight&hide_border=true&border_radius=5&locale=pt_BR" alt="GitHub Streak" width="100%" />
+</a>
 
   <br /><br />
 
