@@ -1,4 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 610" width="1180" height="610">
+    <defs>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap');
+        </style>
+    </defs>
+
     <rect width="1180" height="610" fill="#0A101F" rx="10" />
 
     <!-- Janela Terminal Chrome -->
@@ -35,7 +41,7 @@
         <!-- Row: Role -->
         <text x="490" y="198" fill="#94A3B8" font-family="JetBrains Mono, monospace" font-size="13" font-weight="600">Role</text>
         <path d="M630,194 h330" stroke="#94A3B8" stroke-dasharray="2 6" stroke-width="1" opacity="0.4" />
-        <text x="1110" y="198" fill="#F8FAFC" font-family="JetBrains Mono, monospace" font-size="13" font-weight="600" text-anchor="end">Estudante de IA & Desenvolvedor</text>
+        <text x="1110" y="198" fill="#F8FAFC" font-family="JetBrains Mono, monospace" font-size="13" font-weight="600" text-anchor="end">Estudante de IA &amp; Desenvolvedor</text>
         
 
         <!-- Row: Origin -->
@@ -53,7 +59,7 @@
         <!-- Row: Status -->
         <text x="490" y="312" fill="#94A3B8" font-family="JetBrains Mono, monospace" font-size="13" font-weight="600">Status</text>
         <path d="M630,308 h330" stroke="#94A3B8" stroke-dasharray="2 6" stroke-width="1" opacity="0.4" />
-        <text x="1110" y="312" fill="#F8FAFC" font-family="JetBrains Mono, monospace" font-size="13" font-weight="600" text-anchor="end">Building & Learning</text>
+        <text x="1110" y="312" fill="#F8FAFC" font-family="JetBrains Mono, monospace" font-size="13" font-weight="600" text-anchor="end">Building &amp; Learning</text>
         
 
         <!-- Row: Core.Lang -->
