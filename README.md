@@ -1,8 +1,9 @@
 <div align="center">
-
-<!-- BANNER PRINCIPAL (SINTAXE NATIVA DO GITHUB PARA DARK/LIGHT) -->
-![Gabriel Guadalup - Dark](dark.svg#gh-dark-mode-only)
-![Gabriel Guadalup - Light](light.svg#gh-light-mode-only)
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/main/dark.svg?v=1">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/main/light.svg?v=1">
+    <img alt="Gabriel Guadalup - Terminal" src="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/main/dark.svg?v=1" width="100%">
+  </picture>
 
 <br /><br />
 
