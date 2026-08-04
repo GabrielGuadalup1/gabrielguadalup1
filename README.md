@@ -1,39 +1,10 @@
-<!--
-================================================================
-  ANTES DE COMMITAR — 2 decisões pendentes:
-  1. E-MAIL: existem três em circulação hoje
-       onix2k.dev@gmail.com          (sidebar do GitHub)
-       gabrielguadalup.dev@gmail.com (banner atual)
-       gabrielguadalup@gmail.com     (usado abaixo)
-     Escolha UM e use o mesmo aqui, na sidebar, no banner e no LinkedIn.
-  2. O BANNER precisa ser regerado sem a linha Core.AI — ver notas no chat.
-================================================================
--->
-
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)"
-          srcset="https://raw.githubusercontent.com/GabrielGuadalup1/gabrielguadalup1/main/dark.svg">
-  <source media="(prefers-color-scheme: light)"
-          srcset="https://raw.githubusercontent.com/GabrielGuadalup1/gabrielguadalup1/main/light.svg">
-  <img alt="Gabriel Guadalup — estudante de Inteligência Artificial no IFAP"
-       src="https://raw.githubusercontent.com/GabrielGuadalup1/gabrielguadalup1/main/light.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/GabrielGuadalup1/gabrielguadalup1/main/dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/GabrielGuadalup1/gabrielguadalup1/main/light.svg">
+  <img alt="Gabriel Guadalup" src="https://raw.githubusercontent.com/GabrielGuadalup1/gabrielguadalup1/main/light.svg">
 </picture>
-
-<br /><br />
-
-<a href="https://www.linkedin.com/in/gabriel-guadalup-78351329a">
-  <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
-</a>
-&nbsp;&nbsp;
-<a href="mailto:gabrielguadalup@gmail.com">
-  <img src="https://img.shields.io/badge/E--mail-0A101F?style=for-the-badge&logo=gmail&logoColor=A78BFA&labelColor=0A101F" alt="E-mail" />
-</a>
-&nbsp;&nbsp;
-<a href="https://instagram.com/Gguadalup">
-  <img src="https://img.shields.io/badge/Instagram-0A101F?style=for-the-badge&logo=instagram&logoColor=A78BFA&labelColor=0A101F" alt="Instagram" />
-</a>
 
 </div>
 
@@ -41,33 +12,18 @@
 
 ## Sobre mim
 
-Me chamo Gabriel Guadalup, tenho 25 anos e sou de Macapá, no Amapá. Curso
-**Bacharelado em Inteligência Artificial** no Instituto Federal do Amapá (IFAP),
-onde estou entrando no 2º semestre.
+Me chamo Gabriel 👋, tenho 27 anos e sou de Macapá, no Amapá. Curso
+Bacharelado em Inteligência Artificial 🎓 no Instituto Federal do Amapá (IFAP) 🚀 e
+estou entrando no 2º semestre.
 
-Uso este GitHub para registrar o que aprendo no curso — o que inclui código que
-ainda está longe de pronto. Aprender em público é o ponto.
+Uso este GitHub para guardar o que aprendo no curso, inclusive o que ainda está
+pela metade.
 
-- **Estudando neste semestre:** Estruturas de Dados, Programação Orientada a Objetos, Cálculo e Arquitetura de Computadores
-- **Praticando:** Python, lógica de programação e versionamento com Git
-- **Também mexo com:** HTML, CSS, JavaScript e TypeScript em projetos web
-- **Quero colaborar em:** projetos iniciantes de IA, dados ou web
-- **Aberto a:** oportunidades de estágio na área de tecnologia
-
----
-
-## Tecnologias
-
-<div align="center">
-  <img src="https://skillicons.dev/icons?i=python,js,ts,html,css,git,github,vscode&theme=dark"
-       alt="Python, JavaScript, TypeScript, HTML, CSS, Git, GitHub, VS Code" />
-</div>
-
-<!--
-  Regra: só entra ícone com repositório correspondente.
-  Ao adicionar ou remover repositório, revise esta linha.
-  Sem NumPy, Pandas ou Scikit-Learn até existir código usando cada um.
--->
+- 🎓 **Estudando neste semestre:** Estruturas de Dados, Programação Orientada a Objetos, Cálculo e Arquitetura de Computadores
+- 🐍 **Praticando:** Python, lógica de programação e versionamento com Git
+- 🌐 **Também mexo com:** HTML, CSS, JavaScript e TypeScript em projetos web
+- 🤝 **Quero colaborar em:** projetos iniciantes de IA, dados ou web
+- 💼 **Aberto a:** oportunidades de estágio na área de tecnologia
 
 ---
 
@@ -90,55 +46,53 @@ Próximos passos:
 
 ---
 
-## Estatísticas
-
-<div align="center">
-
-<img height="150"
-     src="https://streak-stats.demolab.com?user=GabrielGuadalup1&locale=pt-br&theme=tokyonight&hide_border=true&border_radius=17"
-     alt="Sequência de contribuições" />
-
-<br /><br />
-
-<img height="150"
-     src="https://github-stats-extended.vercel.app/api?username=GabrielGuadalup1&locale=pt-br&show_icons=true&include_all_commits=true&count_private=true&hide_rank=true&theme=tokyonight&hide_border=true"
-     alt="Estatísticas do GitHub" />
-
-<img height="150"
-     src="https://github-stats-extended.vercel.app/api/top-langs/?username=GabrielGuadalup1&locale=pt-br&layout=compact&langs_count=8&theme=tokyonight&hide_border=true"
-     alt="Linguagens mais usadas" />
-
-</div>
-
-###
-
-<div data-importer="profile-views" align="center">
-  <img data-importer="profile-views" src="https://visitor-badge.laobi.icu/badge?page_id=GabrielGuadalup1.GabrielGuadalup1&"  />
-</div>
-
-
-<!--
-  O card de stats fica fora até o workflow rodar verde.
-  Erro atual: "Resource not accessible by integration"
-  Correção: Settings do REPOSITÓRIO > Actions > General >
-            Workflow permissions > Read and write permissions > Save
-  Depois de verde, acrescentar aqui:
-
-<img height="150"
-     src="https://raw.githubusercontent.com/GabrielGuadalup1/gabrielguadalup1/stats-output/stats.svg"
-     alt="Estatísticas do GitHub" />
--->
+## Projetos
 
 ---
 
-<picture data-importer="pacman">
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/pacman-output/puzzle-bobble-contribution-graph-dark.svg?game=puzzle-bobble">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/pacman-output/puzzle-bobble-contribution-graph.svg?game=puzzle-bobble">
-  <img alt="pacman contribution graph" src="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/pacman-output/puzzle-bobble-contribution-graph.svg?game=puzzle-bobble">
-</picture>
-
-###
+## Tecnologias
 
 <div align="center">
-  <sub>Aprendendo em público. Cada commit aqui é uma aula que virou código.</sub>
+  <img src="https://skillicons.dev/icons?i=python,js,ts,html,css,git,github,vscode&theme=dark" alt="Python, JavaScript, TypeScript, HTML, CSS, Git, GitHub, VS Code" />
+</div>
+
+---
+
+## Estatísticas
+
+<div align="center">
+<img width="100%" src="https://streak-stats.demolab.com?user=GabrielGuadalup1&locale=pt-br&theme=tokyonight&hide_border=true&border_radius=17&card_width=1180" alt="Sequência de contribuições" />
+<br/>
+<img width="49%" height="200" src="https://github-stats-extended.vercel.app/api?username=GabrielGuadalup1&locale=pt-br&theme=tokyonight&show_icons=true&count_private=true&include_all_commits=true&hide_rank=true&hide_border=true&card_width=500" alt="Estatísticas do GitHub" />
+<img width="49%" height="200" src="https://github-stats-extended.vercel.app/api/top-langs/?username=GabrielGuadalup1&locale=pt-br&theme=tokyonight&layout=compact&langs_count=8&hide_border=true&card_width=500" alt="Linguagens mais usadas" />
+</div>
+
+---
+
+## 🤝 Vamos nos conectar
+
+<div align="center">
+
+<a href="https://www.linkedin.com/in/gabriel-guadalup-78351329a">
+  <img src="https://img.shields.io/badge/💼_LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+</a>
+&nbsp;&nbsp;
+<a href="mailto:gabrielguadalup@gmail.com">
+  <img src="https://img.shields.io/badge/📧_E--mail-0A101F?style=for-the-badge&logo=gmail&logoColor=A78BFA&labelColor=0A101F" alt="E-mail" />
+</a>
+&nbsp;&nbsp;
+<a href="SEU-LINK-AQUI">
+  <img src="https://img.shields.io/badge/🌐_Portfólio-0A101F?style=for-the-badge&logo=googlechrome&logoColor=A78BFA&labelColor=0A101F" alt="Portfólio" />
+</a>
+&nbsp;&nbsp;
+<a href="SEU-LINK-AQUI">
+  <img src="https://img.shields.io/badge/📄_Currículo-0A101F?style=for-the-badge&logo=readdotcv&logoColor=A78BFA&labelColor=0A101F" alt="Currículo" />
+</a>
+
+</div>
+
+---
+
+<div align="center">
+  <sub>Aprendendo em público.</sub>
 </div>
