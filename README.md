@@ -50,40 +50,31 @@ Sou **Gabriel Guadalup**, um profissional com base sólida em exatas (Engenharia
 
 ### 📊 Estatísticas e Atividade (GitHub)
 
-<div align="center">
-
-  <!-- 1. STREAK STATS (Servidor espelho com tema Tokyonight) -->
-  <a href="https://github.com/DenverCoder1/github-readme-streak-stats">
-    <img src="https://github-readme-streak-stats.herokuapp.com?user=GabrielGuadalup1&theme=tokyonight&hide_border=true&border_radius=5" alt="GitHub Streak" width="100%" />
-  </a>
-
-  <br /><br />
-
-  <!-- 2. GITHUB STATS + MOST USED LANGUAGES (Lado a lado) -->
-  <img src="https://github-readme-stats-fast.vercel.app/api?username=GabrielGuadalup1&show_icons=true&theme=tokyonight&hide_border=true" alt="Gabriel Guadalup's GitHub Stats" width="49%" />
-  <img src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=GabrielGuadalup1&layout=compact&theme=tokyonight&hide_border=true" alt="Most Used Languages" width="49%" />
-
+<<div data-importer="stats" align="center">
+  <img src="https://streak-stats.demolab.com?user=GabrielGuadalup1&locale=pt-br&mode=weekly&theme=tokyonight&hide_border=true&border_radius=17&date_format=j%20M%5B%20Y%5D&order=3" height="250" alt="streak graph"  />
+  <img src="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/stats-output/stats.svg?hide_title=false&hide_rank=true&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=tokyonight&locale=pt-br&hide_border=false&order=1" height="150" alt="stats graph"  />
+  <img src="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/languages-output/languages.svg?locale=pt-br&hide_title=false&layout=compact&card_width=320&langs_count=10&theme=tokyonight&hide_border=true&order=2" height="150" alt="languages graph"  />
 </div>
 
-  <br /><br />
-  
-<div align="center">
-  <!-- CONTADOR DE VISITAS CENTRADO -->
-  <img src="https://visitor-badge.laobi.icu/badge?page_id=GabrielGuadalup1.GabrielGuadalup1" alt="Contador de Visitas" />
+###
 
+<div data-importer="profile-views" align="center">
+  <img data-importer="profile-views" src="https://visitor-badge.laobi.icu/badge?page_id=GabrielGuadalup1.GabrielGuadalup1&"  />
 </div>
+
+###
 
 ---
 
 <div align="center">
   <p><i>"Aprendendo em público e construindo soluções com Inteligência Artificial."</i> 🚀</p>
 </div>
-###
+
 
 <picture data-importer="pacman">
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/pacman-output/bomberman-contribution-graph-dark.svg?game=bomberman">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/pacman-output/bomberman-contribution-graph.svg?game=bomberman">
-  <img alt="pacman contribution graph" src="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/pacman-output/bomberman-contribution-graph.svg?game=bomberman">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/pacman-output/puzzle-bobble-contribution-graph-dark.svg?game=puzzle-bobble">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/pacman-output/puzzle-bobble-contribution-graph.svg?game=puzzle-bobble">
+  <img alt="pacman contribution graph" src="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/pacman-output/puzzle-bobble-contribution-graph.svg?game=puzzle-bobble">
 </picture>
 
 ###
