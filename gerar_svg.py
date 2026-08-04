@@ -48,110 +48,104 @@ INFO_ROWS = [
 ]
 
 
-def criar_matriz_terminal(h, w):
-    """Gera uma matriz de pontos nítidos para o símbolo do Terminal '>_'."""
-    mat = np.zeros((h, w), dtype=int)
-    cy, cx = h // 2, w // 2 - 15
-    size = 40
-    thickness = 8
-
-    # Desenha '>'
-    for t in range(-size, size):
-        y = cy + t
-        x = cx + (size - abs(t))
-        if 0 <= y < h:
-            for dx in range(-thickness, thickness):
-                for dy in range(-2, 3):
-                    if 0 <= x + dx < w and 0 <= y + dy < h:
-                        mat[y + dy, x + dx] = 1
-
-    # Desenha '_'
-    start_x = cx + 25
-    end_x = cx + 75
-    y_line = cy + 32
-    for x in range(start_x, end_x):
-        for dy in range(-4, 5):
-            if 0 <= y_line + dy < h and 0 <= x < w:
-                mat[y_line + dy, x] = 1
-
-    # Aplica padrão de pontos (grid dither)
-    mask_grid = np.zeros((h, w), dtype=int)
-    mask_grid[::2, ::2] = 1
-    return mat * mask_grid
+def gerar_pontos_linha(p1, p2, count, jitter=2.5):
+    """Gera pontos distribuídos ao longo de uma linha com espessura."""
+    t = np.linspace(0, 1, count)
+    x = p1[0] + t * (p2[0] - p1[0])
+    y = p1[1] + t * (p2[1] - p1[1])
+    if jitter > 0:
+        np.random.seed(42)
+        x += np.random.uniform(-jitter, jitter, count)
+        y += np.random.uniform(-jitter, jitter, count)
+    return np.column_stack((x, y))
 
 
-def criar_matriz_codigo(h, w):
-    """Gera uma matriz de pontos nítidos para o símbolo de código '</>'."""
-    mat = np.zeros((h, w), dtype=int)
-    cy, cx = h // 2, w // 2
-    size = 40
-    thickness = 7
+def gerar_pontos_terminal(N):
+    """Gera N pontos organizados no formato da logo do Terminal (>_)."""
+    cx, cy = OFFSET_X + 150, OFFSET_Y + 180
+    n1 = N // 3
+    n2 = N // 3
+    n3 = N - n1 - n2
 
-    # 1. '<'
-    cx_left = cx - 50
-    for t in range(-size, size):
-        y = cy + t
-        x = cx_left - (size - abs(t))
-        if 0 <= y < h:
-            for dx in range(-thickness, thickness):
-                for dy in range(-2, 3):
-                    if 0 <= x + dx < w and 0 <= y + dy < h:
-                        mat[y + dy, x + dx] = 1
-
-    # 2. '/'
-    for t in range(-size - 10, size + 10):
-        y = cy + t
-        x = cx - int(t * 0.35)
-        if 0 <= y < h:
-            for dx in range(-thickness, thickness):
-                for dy in range(-2, 3):
-                    if 0 <= x + dx < w and 0 <= y + dy < h:
-                        mat[y + dy, x + dx] = 1
-
-    # 3. '>'
-    cx_right = cx + 50
-    for t in range(-size, size):
-        y = cy + t
-        x = cx_right + (size - abs(t))
-        if 0 <= y < h:
-            for dx in range(-thickness, thickness):
-                for dy in range(-2, 3):
-                    if 0 <= x + dx < w and 0 <= y + dy < h:
-                        mat[y + dy, x + dx] = 1
-
-    # Aplica padrão de pontos (grid dither)
-    mask_grid = np.zeros((h, w), dtype=int)
-    mask_grid[::2, ::2] = 1
-    return mat * mask_grid
+    p1 = gerar_pontos_linha((cx - 50, cy - 45), (cx - 10, cy), n1)
+    p2 = gerar_pontos_linha((cx - 10, cy), (cx - 50, cy + 45), n2)
+    p3 = gerar_pontos_linha((cx + 10, cy + 45), (cx + 65, cy + 45), n3)
+    return np.vstack((p1, p2, p3))
 
 
-def matriz_para_path_d(matriz, offset_x, offset_y):
-    """Converte a matriz em linhas vetoriais perfeitas."""
-    h, w = matriz.shape
-    segments = []
+def gerar_pontos_codigo(N):
+    """Gera N pontos organizados no formato da tag de código (</>)."""
+    cx, cy = OFFSET_X + 150, OFFSET_Y + 180
+    n1 = N // 5
+    n2 = N // 5
+    n3 = N // 5
+    n4 = N // 5
+    n5 = N - 4 * n1
 
-    for y in range(h):
-        in_run = False
-        run_start = 0
-        for x in range(w):
-            if matriz[y, x] > 0:
-                if not in_run:
-                    in_run = True
-                    run_start = x
-            else:
-                if in_run:
-                    in_run = False
-                    px_x = offset_x + run_start
-                    px_y = offset_y + y
-                    run_len = x - run_start
-                    segments.append(f"M{px_x},{px_y}h{run_len}")
-        if in_run:
-            px_x = offset_x + run_start
-            px_y = offset_y + y
-            run_len = w - run_start
-            segments.append(f"M{px_x},{px_y}h{run_len}")
+    p1 = gerar_pontos_linha((cx - 25, cy - 40), (cx - 65, cy), n1)
+    p2 = gerar_pontos_linha((cx - 65, cy), (cx - 25, cy + 40), n2)
+    p3 = gerar_pontos_linha((cx + 12, cy - 50), (cx - 12, cy + 50), n3)
+    p4 = gerar_pontos_linha((cx + 25, cy - 40), (cx + 65, cy), n4)
+    p5 = gerar_pontos_linha((cx + 65, cy), (cx + 30, cy + 40), n5)
+    return np.vstack((p1, p2, p3, p4, p5))
 
-    return " ".join(segments)
+
+def ordenar_pontos(pts):
+    """Ordena pontos para suavizar as trajetórias das partículas durante a transição."""
+    cx, cy = np.mean(pts[:, 0]), np.mean(pts[:, 1])
+    angles = np.arctan2(pts[:, 1] - cy, pts[:, 0] - cx)
+    radii = np.hypot(pts[:, 0] - cx, pts[:, 1] - cy)
+    indices = np.lexsort((radii, angles))
+    return pts[indices]
+
+
+def gerar_morfismo_particulas_real(matriz, config_tema):
+    """
+    Calcula o vetor de deslocamento individual de cada partícula para animar:
+    Terminal (>_) -> Código (</>) -> Rosto -> Loop.
+    """
+    y_idx, x_idx = np.where(matriz > 0)
+    if len(x_idx) == 0:
+        return ""
+
+    face_pts = np.column_stack((x_idx + OFFSET_X, y_idx + OFFSET_Y))
+    N = len(face_pts)
+
+    term_pts = gerar_pontos_terminal(N)
+    code_pts = gerar_pontos_codigo(N)
+
+    # Ordena pontos para criar um movimento limpo
+    face_pts = ordenar_pontos(face_pts)
+    term_pts = ordenar_pontos(term_pts)
+    code_pts = ordenar_pontos(code_pts)
+
+    particles_svg = []
+    # Amostragem para manter o SVG leve e super fluido no GitHub
+    step = 2 if N > 2000 else 1
+
+    for i in range(0, N, step):
+        xf, yf = int(face_pts[i, 0]), int(face_pts[i, 1])
+
+        # Calcula desvios (offsets) de posição
+        dx_t = int(term_pts[i, 0] - xf)
+        dy_t = int(term_pts[i, 1] - yf)
+
+        dx_c = int(code_pts[i, 0] - xf)
+        dy_c = int(code_pts[i, 1] - yf)
+
+        particle = f"""    <path d="M{xf},{yf}h1">
+      <animateTransform attributeName="transform" type="translate"
+                        values="{dx_t} {dy_t}; {dx_t} {dy_t}; {dx_c} {dy_c}; {dx_c} {dy_c}; 0 0; 0 0; {dx_t} {dy_t}"
+                        keyTimes="0.0; 0.22; 0.35; 0.57; 0.70; 0.88; 1.0"
+                        dur="13s" repeatCount="indefinite"
+                        calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1; 0.4 0 0.2 1; 0.4 0 0.2 1; 0.4 0 0.2 1; 0.4 0 0.2 1"/>
+    </path>"""
+        particles_svg.append(particle)
+
+    paths_combined = "\n".join(particles_svg)
+    return f"""  <g stroke="{config_tema['dot_color']}" stroke-width="1" shape-rendering="crispEdges">
+{paths_combined}
+  </g>"""
 
 
 def gerar_linhas_info_animadas(config_tema, start_y=162, spacing=23):
@@ -175,14 +169,7 @@ def gerar_linhas_info_animadas(config_tema, start_y=162, spacing=23):
 
 
 def gerar_svg_tema(matriz, config_tema):
-    h, w = matriz.shape
-    mat_term = criar_matriz_terminal(h, w)
-    mat_code = criar_matriz_codigo(h, w)
-
-    path_term = matriz_para_path_d(mat_term, OFFSET_X, OFFSET_Y)
-    path_code = matriz_para_path_d(mat_code, OFFSET_X, OFFSET_Y)
-    path_face = matriz_para_path_d(matriz, OFFSET_X, OFFSET_Y)
-
+    rosto_morfismo = gerar_morfismo_particulas_real(matriz, config_tema)
     info_svg = gerar_linhas_info_animadas(config_tema)
 
     svg_content = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{CANVAS_W}" height="{CANVAS_H}" viewBox="0 0 {CANVAS_W} {CANVAS_H}" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" role="img" aria-label="Gabriel Guadalup — profile.sh --live">
@@ -216,20 +203,7 @@ def gerar_svg_tema(matriz, config_tema):
     <rect x="36" y="84" width="400" height="492" rx="10" fill="none" stroke="{config_tema['chrome']}" stroke-width="2" opacity="0.45" filter="url(#glow3)"/>
     <rect x="36" y="84" width="400" height="492" rx="10" fill="{config_tema['bg']}" stroke="rgba(34,211,238,0.35)"/>
 
-    <g opacity="0">
-      <animate attributeName="opacity" values="0; 1; 1; 0; 0" keyTimes="0.0; 0.05; 0.28; 0.33; 1.0" dur="12s" repeatCount="indefinite"/>
-      <path d="{path_term}" stroke="{config_tema['dot_color']}" stroke-width="1" shape-rendering="crispEdges"/>
-    </g>
-
-    <g opacity="0">
-      <animate attributeName="opacity" values="0; 0; 1; 1; 0; 0" keyTimes="0.0; 0.33; 0.38; 0.61; 0.66; 1.0" dur="12s" repeatCount="indefinite"/>
-      <path d="{path_code}" stroke="{config_tema['chrome']}" stroke-width="1" shape-rendering="crispEdges"/>
-    </g>
-
-    <g opacity="0">
-      <animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0.0; 0.66; 0.71; 0.95; 1.0" dur="12s" repeatCount="indefinite"/>
-      <path d="{path_face}" stroke="{config_tema['dot_color']}" stroke-width="1" shape-rendering="crispEdges"/>
-    </g>
+    {rosto_morfismo}
 
     <text x="470" y="106" font-size="13" letter-spacing="2" fill="{config_tema['chrome']}" filter="url(#txtGlow)">SYSTEM.INFO</text>
     <line x1="566" y1="102" x2="1061" y2="102" stroke="rgba(255,255,255,0.10)"/>
