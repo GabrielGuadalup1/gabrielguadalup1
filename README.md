@@ -1,11 +1,8 @@
 <div align="center">
 
-<!-- BANNER PRINCIPAL (ALTERNA ENTRE DARK/LIGHT SVG) -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/main/dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/main/light.svg">
-  <img alt="Gabriel Guadalup - Terminal" src="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/main/light.svg" width="100%">
-</picture>
+<!-- BANNER PRINCIPAL (MODO ESCURO E CLARO NATIVO DO GITHUB) -->
+<img src="dark.svg#gh-dark-mode-only" alt="Gabriel Guadalup - Terminal" width="100%">
+<img src="light.svg#gh-light-mode-only" alt="Gabriel Guadalup - Terminal" width="100%">
 
 <br /><br />
 
@@ -28,7 +25,7 @@
 
 ## 👩‍💻 Sobre mim
 
-Graduando em **Inteligência Artificial** pelo Instituto Federal do Amapá (IFAP - Campus Macapá). 
+Engenheiro Civil de formação e graduando em **Inteligência Artificial** pelo Instituto Federal do Amapá (IFAP - Campus Macapá). 
 
 Atualmente focado em construir uma base sólida em programação, estruturas de dados e fundamentos de IA, utilizando este espaço para registrar projetos acadêmicos e soluções próprias em Python.
 
@@ -62,3 +59,14 @@ Construindo:
 Próximos passos:
   - Publicar repositórios próprios com documentação clara (README)
   - Explorar bibliotecas de Data Science (Pandas, NumPy)
+```
+  
+###
+
+<picture data-importer="pacman">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/pacman-output/bomberman-contribution-graph-dark.svg?game=bomberman">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/pacman-output/bomberman-contribution-graph.svg?game=bomberman">
+  <img alt="pacman contribution graph" src="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/pacman-output/bomberman-contribution-graph.svg?game=bomberman">
+</picture>
+
+###
