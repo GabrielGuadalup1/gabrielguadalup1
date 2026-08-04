@@ -1,11 +1,11 @@
 import numpy as np
 
-# Configurações do Canvas e Layout (Master Prompt)
+# Configurações do Canvas e Layout
 CANVAS_W, CANVAS_H = 1180, 610
 PORTRAIT_W, PORTRAIT_H = 300, 340
 OFFSET_X, OFFSET_Y = 90, 150
 
-# Cores por tema[cite: 2]
+# Cores por tema
 THEMES = {
     "dark": {
         "bg": "#0A101F",
@@ -27,7 +27,7 @@ THEMES = {
     }
 }
 
-# Dados do Painel SYSTEM.INFO[cite: 2]
+# Dados do Painel SYSTEM.INFO
 INFO_ROWS = [
     ("Subject", "Gabriel Guadalup"),
     ("Role", "Estudante de IA & Desenvolvedor"),
@@ -44,7 +44,7 @@ INFO_ROWS = [
 def matriz_para_path_d(matriz, offset_x, offset_y):
     """
     Converte a matriz de pontos (1s) em rotas otimizadas <path d="...">
-    usando corridas horizontais para reduzir o tamanho do arquivo SVG[cite: 2].
+    usando corridas horizontais para reduzir o tamanho do arquivo SVG.
     """
     h, w = matriz.shape
     segments = []
@@ -74,27 +74,37 @@ def matriz_para_path_d(matriz, offset_x, offset_y):
 
 
 def gerar_svg_tema(matriz, config_tema):
-    """Gera a estrutura SVG completa para um tema (dark/light)[cite: 2]."""
+    """Gera a estrutura SVG completa para um tema (dark/light)."""
     path_d = matriz_para_path_d(matriz, OFFSET_X, OFFSET_Y)
     
-    # Construção das linhas de dados com leaders pontilhados[cite: 2]
+    # Construção das linhas de dados com tratamento do caractere '&'
     rows_svg = []
     start_y = 160
     spacing = 38
     
     for i, (label, val) in enumerate(INFO_ROWS):
         y = start_y + (i * spacing)
+        
+        # Converte & para &amp; para não quebrar o parser XML
+        val_xml = val.replace("&", "&amp;")
+        
         row_str = f"""
         <!-- Row: {label} -->
         <text x="490" y="{y}" fill="{config_tema['text_sub']}" font-family="JetBrains Mono, monospace" font-size="13" font-weight="600">{label}</text>
         <path d="M630,{y-4} h330" stroke="{config_tema['text_sub']}" stroke-dasharray="2 6" stroke-width="1" opacity="0.4" />
-        <text x="1110" y="{y}" fill="{config_tema['text_main']}" font-family="JetBrains Mono, monospace" font-size="13" font-weight="600" text-anchor="end">{val}</text>
+        <text x="1110" y="{y}" fill="{config_tema['text_main']}" font-family="JetBrains Mono, monospace" font-size="13" font-weight="600" text-anchor="end">{val_xml}</text>
         """
         rows_svg.append(row_str)
         
     info_content = "\n".join(rows_svg)
 
     svg_content = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {CANVAS_W} {CANVAS_H}" width="{CANVAS_W}" height="{CANVAS_H}">
+    <defs>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap');
+        </style>
+    </defs>
+
     <rect width="{CANVAS_W}" height="{CANVAS_H}" fill="{config_tema['bg']}" rx="10" />
 
     <!-- Janela Terminal Chrome -->
@@ -131,10 +141,8 @@ def gerar_svg_tema(matriz, config_tema):
 
 
 if __name__ == "__main__":
-    # Carrega as matrizes geradas pelo script de dithering[cite: 2]
     pontos_claro = np.load("pontos.npy")
     pontos_escuro = np.load("pontos_escuro.npy")
 
-    # Gera dark.svg e light.svg
     gerar_svg_tema(pontos_escuro, THEMES["dark"])
     gerar_svg_tema(pontos_claro, THEMES["light"])
