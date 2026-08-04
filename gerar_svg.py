@@ -1,10 +1,10 @@
 import numpy as np
 
-# Configurações do Canvas e Posição do Retrato
+# Configurações do Canvas e Layout
 CANVAS_W, CANVAS_H = 1180, 610
 OFFSET_X, OFFSET_Y = 86, 150
 
-# Cores e configurações por tema
+# Cores por tema
 THEMES = {
     "dark": {
         "bg": "#0A101F",
@@ -48,33 +48,88 @@ INFO_ROWS = [
 ]
 
 
-def matriz_para_path_d(matriz, offset_x, offset_y):
-    """Converte a matriz de pontos em rotas <path d="..."> contínuas."""
-    h, w = matriz.shape
-    segments = []
+def gerar_pontos_simbolos(num_pontos):
+    """
+    Gera pontos organizados no formato do Terminal (>_) e do Python.
+    """
+    cx, cy = OFFSET_X + 150, OFFSET_Y + 170
+    pts = []
+    
+    # 1. Desenha o símbolo do Terminal '>_'
+    n_term = num_pontos // 2
+    # Parte superior do '>'
+    for t in np.linspace(-50, 0, n_term // 3):
+        pts.append([cx - 50 + t, cy + t])
+    # Parte inferior do '>'
+    for t in np.linspace(0, 50, n_term // 3):
+        pts.append([cx - 100 + t, cy + t])
+    # Traço '_'
+    for x in np.linspace(cx - 10, cx + 50, n_term - 2 * (n_term // 3)):
+        pts.append([x, cy + 50])
 
-    for y in range(h):
-        in_run = False
-        run_start = 0
-        for x in range(w):
-            if matriz[y, x] > 0:
-                if not in_run:
-                    in_run = True
-                    run_start = x
-            else:
-                if in_run:
-                    in_run = False
-                    px_x = offset_x + run_start
-                    px_y = offset_y + y
-                    run_len = x - run_start
-                    segments.append(f"M{px_x},{px_y}h{run_len}")
-        if in_run:
-            px_x = offset_x + run_start
-            px_y = offset_y + y
-            run_len = w - run_start
-            segments.append(f"M{px_x},{px_y}h{run_len}")
+    # 2. Desenha a estrutura do Python (dois blocos entrelaçados)
+    n_py = num_pontos - len(pts)
+    # Bloco superior do Python
+    for theta in np.linspace(0, np.pi, n_py // 2):
+        pts.append([cx + 30 * np.cos(theta), cy - 30 + 30 * np.sin(theta)])
+    # Bloco inferior do Python
+    for theta in np.linspace(np.pi, 2 * np.pi, n_py - (n_py // 2)):
+        pts.append([cx + 30 * np.cos(theta), cy + 10 + 30 * np.sin(theta)])
 
-    return " ".join(segments)
+    return np.array(pts)
+
+
+def gerar_morfismo_rosto_svg(matriz, config_tema, num_grupos=30):
+    """
+    Cria a animação SVG pura (SMIL) onde os pontos saem do formato
+    Terminal/Python e navegam até o seu rosto.
+    """
+    y_idx, x_indices = np.where(matriz > 0)
+    if len(x_indices) == 0:
+        return ""
+
+    face_pts = np.column_stack((x_indices + OFFSET_X, y_idx + OFFSET_Y))
+    num_pts = len(face_pts)
+
+    # Gera os pontos iniciais (Terminal + Python)
+    start_pts = gerar_pontos_simbolos(num_pts)
+
+    # Embaralha os índices para criar um efeito orgânico de partículas se espalhando
+    np.random.seed(42)
+    perm = np.random.permutation(num_pts)
+    face_pts = face_pts[perm]
+    start_pts = start_pts[perm]
+
+    groups_svg = []
+    batches_face = np.array_split(face_pts, num_grupos)
+    batches_start = np.array_split(start_pts, num_grupos)
+
+    for i in range(num_grupos):
+        bf = batches_face[i]
+        bs = batches_start[i]
+        if len(bf) == 0:
+            continue
+
+        # Calcula o deslocamento (offset) do símbolo até o rosto
+        dx_mean = int(np.mean(bs[:, 0] - bf[:, 0]))
+        dy_mean = int(np.mean(bs[:, 1] - bf[:, 1]))
+
+        # Monta a rota dos pontos do grupo
+        path_segments = [f"M{int(px)},{int(py)}h1" for px, py in bf]
+        path_d = " ".join(path_segments)
+
+        # Animação em loop: Símbolo (offset) -> Transição -> Rosto (0 0) -> Pausa -> Volta ao Símbolo
+        anim_svg = f"""    <g>
+      <animateTransform attributeName="transform" type="translate"
+                        values="{dx_mean} {dy_mean}; {dx_mean} {dy_mean}; 0 0; 0 0; {dx_mean} {dy_mean}"
+                        keyTimes="0.0; 0.15; 0.35; 0.85; 1.0"
+                        dur="12s" repeatCount="indefinite"
+                        calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1; 0.4 0 0.2 1; 0.4 0 0.2 1"/>
+      <path d="{path_d}" stroke="{config_tema['dot_color']}" stroke-width="1" shape-rendering="crispEdges"/>
+    </g>"""
+        groups_svg.append(anim_svg)
+
+    return "\n".join(groups_svg)
 
 
 def gerar_linhas_info_animadas(config_tema, start_y=162, spacing=23):
@@ -98,7 +153,7 @@ def gerar_linhas_info_animadas(config_tema, start_y=162, spacing=23):
 
 
 def gerar_svg_tema(matriz, config_tema):
-    path_d = matriz_para_path_d(matriz, OFFSET_X, OFFSET_Y)
+    rosto_morfismo = gerar_morfismo_rosto_svg(matriz, config_tema)
     info_svg = gerar_linhas_info_animadas(config_tema)
 
     svg_content = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{CANVAS_W}" height="{CANVAS_H}" viewBox="0 0 {CANVAS_W} {CANVAS_H}" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace" role="img" aria-label="Gabriel Guadalup — profile.sh --live">
@@ -132,10 +187,7 @@ def gerar_svg_tema(matriz, config_tema):
     <rect x="36" y="84" width="400" height="492" rx="10" fill="none" stroke="{config_tema['chrome']}" stroke-width="2" opacity="0.45" filter="url(#glow3)"/>
     <rect x="36" y="84" width="400" height="492" rx="10" fill="{config_tema['bg']}" stroke="rgba(34,211,238,0.35)"/>
 
-    <g opacity="0">
-      <animate attributeName="opacity" from="0" to="1" dur="0.8s" begin="0.1s" fill="freeze"/>
-      <path d="{path_d}" stroke="{config_tema['dot_color']}" stroke-width="1" shape-rendering="crispEdges"/>
-    </g>
+    {rosto_morfismo}
 
     <text x="470" y="106" font-size="13" letter-spacing="2" fill="{config_tema['chrome']}" filter="url(#txtGlow)">SYSTEM.INFO</text>
     <line x1="566" y1="102" x2="1061" y2="102" stroke="rgba(255,255,255,0.10)"/>
