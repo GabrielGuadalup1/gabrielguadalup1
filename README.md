@@ -52,39 +52,20 @@ Sou **Gabriel Guadalup**, um profissional com base sólida em exatas (Engenharia
 
 <div align="center">
 
-  <!-- GITHUB STREAK STATS (Tema Hacker) -->
+  <!-- 1. STREAK STATS (Largo e no tema escuro) -->
   <a href="https://git.io/streak-stats">
-    <img src="https://streak-stats.demolab.com?user=GabrielGuadalup1&theme=hacker&hide_border=true&border_radius=10&locale=pt_BR&short_numbers=true&date_format=j%20M%5B%20Y%5D&mode=weekly" alt="GitHub Streak" />
+    <img src="https://streak-stats.demolab.com?user=GabrielGuadalup1&theme=tokyonight&hide_border=true&border_radius=5" alt="GitHub Streak" width="100%" />
   </a>
 
   <br /><br />
 
-  <!-- GITHUB STATS & TOP LANGS (Padrão Cyberpunk) -->
-  <img src="https://github-readme-stats.vercel.app/api?username=GabrielGuadalup1&show_icons=true&theme=cyberpunk&hide_border=true&locale=pt-br" alt="GitHub Stats" height="165" style="margin-right: 5px;"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=GabrielGuadalup1&layout=compact&theme=cyberpunk&hide_border=true&locale=pt-br" alt="Top Languages" height="165" style="margin-left: 5px;"/>
-
-  <br /><br />
-
-  <!-- CARDS DE RESUMO DO PERFIL (Tema Chartreuse Dark via API Vercel) -->
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=GabrielGuadalup1&theme=chartreuse_dark" alt="Profile Details Summary" width="100%" />
-
-  <br /><br />
-
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=GabrielGuadalup1&theme=chartreuse_dark" width="48%" style="margin-right: 1%;"/>
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=GabrielGuadalup1&theme=chartreuse_dark" width="48%" style="margin-left: 1%;"/>
-
-  <br /><br />
-
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=GabrielGuadalup1&theme=chartreuse_dark" width="48%" style="margin-right: 1%;"/>
-  <!-- Ajuste de UTC Offset para o fuso local do Amapá (-3) -->
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=GabrielGuadalup1&theme=chartreuse_dark&utcOffset=-3" width="48%" style="margin-left: 1%;"/>
-
-  <br /><br />
-
-  <!-- GITHUB STATS EXTENDED (Tema Chartreuse Dark) -->
-  <img src="https://github-stats-extended.vercel.app/api?username=GabrielGuadalup1&theme=chartreuse_dark" alt="GitHub Stats Extended" />
-
-  <br /><br />
+  <!-- 2. GITHUB STATS + MOST USED LANGUAGES (Lado a lado no tema escuro/neon) -->
+  <a href="https://github.com/anuraghazra/github-readme-stats">
+    <img src="https://github-readme-stats.vercel.app/api?username=GabrielGuadalup1&show_icons=true&theme=tokyonight&hide_border=true" alt="Gabriel Guadalup's GitHub Stats" width="49.5%" />
+  </a>
+  <a href="https://github.com/anuraghazra/github-readme-stats">
+    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=GabrielGuadalup1&layout=compact&theme=tokyonight&hide_border=true" alt="Most Used Languages" width="49.5%" />
+  </a>
 
   <!-- CONTADOR DE VISITAS CENTRADO -->
   <img src="https://visitor-badge.laobi.icu/badge?page_id=GabrielGuadalup1.GabrielGuadalup1" alt="Contador de Visitas" />
