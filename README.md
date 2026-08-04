@@ -50,9 +50,10 @@ Sou **Gabriel Guadalup**, um profissional com base sólida em exatas (Engenharia
 
 ### 📊 Estatísticas e Atividade (GitHub)
 
-<<div data-importer="stats" align="center">
-  <img src="https://streak-stats.demolab.com?user=GabrielGuadalup1&locale=pt-br&mode=weekly&theme=tokyonight&hide_border=true&border_radius=17&date_format=j%20M%5B%20Y%5D&order=3" height="250" alt="streak graph"  />
-  <img src="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/stats-output/stats.svg?hide_title=false&hide_rank=true&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=tokyonight&locale=pt-br&hide_border=false&order=1" height="150" alt="stats graph"  />
+<div data-importer="stats" align="center">
+  <img src="https://streak-stats.demolab.com?user=GabrielGuadalup1&locale=pt-br&mode=weekly&theme=tokyonight&hide_border=true&border_radius=17&date_format=j%20M%5B%20Y%5D&order=3" height="150" alt="streak graph"  />
+   <br /><br />
+  <img src="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/stats-output/stats.svg?hide_title=false&hide_rank=true&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=tokyonight&locale=pt-br&hide_border=true&order=1" height="150" alt="stats graph"  />
   <img src="https://raw.githubusercontent.com/GabrielGuadalup1/GabrielGuadalup1/languages-output/languages.svg?locale=pt-br&hide_title=false&layout=compact&card_width=320&langs_count=10&theme=tokyonight&hide_border=true&order=2" height="150" alt="languages graph"  />
 </div>
 
