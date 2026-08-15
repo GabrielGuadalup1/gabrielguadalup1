@@ -37,10 +37,8 @@ Aprendendo:
 
 Construindo:
   - Repositório de exercícios e projetos do curso
-  - Banner deste perfil, em SVG gerado por script Python
 
 Próximos passos:
-  - Publicar um projeto com README explicando problema e solução
   - Buscar estágio na área
 ```
 
