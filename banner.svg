@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="370" viewBox="0 0 840 370" role="img" aria-label="Gabriel Guadalup — estudante de Inteligência Artificial no IFAP">
+
+<defs>
+  <!-- fundo: escuro no centro, mais escuro nas bordas -->
+  <radialGradient id="bg" cx="35%" cy="20%" r="85%">
+    <stop offset="0%" stop-color="#0B1120"/>
+    <stop offset="100%" stop-color="#050816"/>
+  </radialGradient>
+
+  <!-- borda: roxo -> ciano -> verde -->
+  <linearGradient id="borda" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%"   stop-color="#7C3AED"/>
+    <stop offset="50%"  stop-color="#22D3EE"/>
+    <stop offset="100%" stop-color="#10B981"/>
+  </linearGradient>
+
+  <!-- gradiente do nome -->
+  <linearGradient id="nomeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#22D3EE">
+      <animate attributeName="stop-color" values="#22D3EE;#A78BFA;#22D3EE" dur="8s" repeatCount="indefinite"/>
+    </stop>
+    <stop offset="100%" stop-color="#A78BFA">
+      <animate attributeName="stop-color" values="#A78BFA;#22D3EE;#A78BFA" dur="8s" repeatCount="indefinite"/>
+    </stop>
+  </linearGradient>
+
+  <!-- linhas horizontais finas -->
+  <pattern id="linhas" width="4" height="4" patternUnits="userSpaceOnUse">
+    <rect width="4" height="1" fill="#7DD3FC" opacity="0.04"/>
+  </pattern>
+
+  <!-- varredura suave -->
+  <linearGradient id="varredura" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%"   stop-color="#22D3EE" stop-opacity="0"/>
+    <stop offset="50%"  stop-color="#A5F3FC" stop-opacity="0.18"/>
+    <stop offset="100%" stop-color="#22D3EE" stop-opacity="0"/>
+  </linearGradient>
+
+  <!-- cortinas de animação -->
+  <clipPath id="c0"><rect x="40" y="82"  width="0" height="20"><animate attributeName="width" from="0" to="760" dur="0.35s" begin="0.50s" fill="freeze"/></rect></clipPath>
+  <clipPath id="c1"><rect x="40" y="104" width="0" height="20"><animate attributeName="width" from="0" to="760" dur="0.35s" begin="0.61s" fill="freeze"/></rect></clipPath>
+  <clipPath id="c2"><rect x="40" y="126" width="0" height="20"><animate attributeName="width" from="0" to="760" dur="0.35s" begin="0.72s" fill="freeze"/></rect></clipPath>
+  <clipPath id="c3"><rect x="40" y="160" width="0" height="20"><animate attributeName="width" from="0" to="760" dur="0.35s" begin="0.87s" fill="freeze"/></rect></clipPath>
+  <clipPath id="c4"><rect x="40" y="182" width="0" height="20"><animate attributeName="width" from="0" to="760" dur="0.35s" begin="0.98s" fill="freeze"/></rect></clipPath>
+  <clipPath id="c5"><rect x="40" y="204" width="0" height="20"><animate attributeName="width" from="0" to="760" dur="0.35s" begin="1.09s" fill="freeze"/></rect></clipPath>
+  <clipPath id="c6"><rect x="40" y="226" width="0" height="20"><animate attributeName="width" from="0" to="760" dur="0.35s" begin="1.20s" fill="freeze"/></rect></clipPath>
+  <clipPath id="c7"><rect x="40" y="260" width="0" height="20"><animate attributeName="width" from="0" to="760" dur="0.35s" begin="1.35s" fill="freeze"/></rect></clipPath>
+  <clipPath id="c8"><rect x="40" y="282" width="0" height="20"><animate attributeName="width" from="0" to="760" dur="0.35s" begin="1.46s" fill="freeze"/></rect></clipPath>
+  <clipPath id="c9"><rect x="40" y="304" width="0" height="20"><animate attributeName="width" from="0" to="760" dur="0.35s" begin="1.57s" fill="freeze"/></rect></clipPath>
+
+  <style>
+    .chave  { font-family: 'Courier New', Consolas, monospace; font-size: 14px; fill: #22D3EE; font-weight: bold; }
+    .valor  { font-family: 'Courier New', Consolas, monospace; font-size: 14px; fill: #E5E7EB; }
+    .pontos { font-family: 'Courier New', Consolas, monospace; font-size: 14px; fill: #334155; }
+    .secao  { font-family: 'Courier New', Consolas, monospace; font-size: 13px; fill: #10B981; font-weight: bold; letter-spacing: 1px; }
+    .barra  { font-family: 'Courier New', Consolas, monospace; font-size: 12px; fill: #64748B; }
+    .nome   { font-family: 'Courier New', Consolas, monospace; font-size: 26px; font-weight: bold; fill: url(#nomeGrad); }
+    text, tspan { white-space: pre; }
+  </style>
+</defs>
+
+<!-- FUNDO -->
+<rect width="840" height="370" rx="14" fill="url(#bg)"/>
+<rect width="840" height="370" rx="14" fill="url(#linhas)"/>
+
+<!-- BARRA DE TÍTULO -->
+<g>
+  <rect x="2" y="2" width="836" height="30" rx="13" fill="#0B1120" fill-opacity="0.9"/>
+  <circle cx="22" cy="17" r="4.5" fill="#EF4444"/>
+  <circle cx="38" cy="17" r="4.5" fill="#F59E0B"/>
+  <circle cx="54" cy="17" r="4.5" fill="#10B981"/>
+  <text x="420" y="21" text-anchor="middle" class="barra">gabriel@ifap ~ % ./perfil.sh</text>
+</g>
+
+<!-- NOME -->
+<text x="40" y="62" class="nome" opacity="0">
+  Gabriel Guadalup
+  <animate attributeName="opacity" from="0" to="1" dur="0.6s" begin="0.1s" fill="freeze"/>
+</text>
+
+<!-- IDENTIFICAÇÃO -->
+<g clip-path="url(#c0)"><text x="40" y="96">
+  <tspan class="chave">Local</tspan><tspan class="pontos"> ............. </tspan><tspan class="valor">Macapá, Amapá — Brasil</tspan>
+</text></g>
+
+<g clip-path="url(#c1)"><text x="40" y="118">
+  <tspan class="chave">Curso</tspan><tspan class="pontos"> ............. </tspan><tspan class="valor">Bacharelado em Inteligência Artificial</tspan>
+</text></g>
+
+<g clip-path="url(#c2)"><text x="40" y="140">
+  <tspan class="chave">Instituição</tspan><tspan class="pontos"> ....... </tspan><tspan class="valor">IFAP — Campus Macapá · 2º semestre</tspan>
+</text></g>
+
+<!-- STACK -->
+<g clip-path="url(#c3)"><text x="40" y="174">
+  <tspan class="secao">— STACK</tspan><tspan class="pontos"> ————————————————————————————————————</tspan>
+</text></g>
+
+<g clip-path="url(#c4)"><text x="40" y="196">
+  <tspan class="chave">Linguagens</tspan><tspan class="pontos"> ........ </tspan><tspan class="valor">Python, JavaScript</tspan>
+</text></g>
+
+<g clip-path="url(#c5)"><text x="40" y="218">
+  <tspan class="chave">Web</tspan><tspan class="pontos"> ............... </tspan><tspan class="valor">HTML, CSS</tspan>
+</text></g>
+
+<g clip-path="url(#c6)"><text x="40" y="240">
+  <tspan class="chave">Ferramentas</tspan><tspan class="pontos"> ....... </tspan><tspan class="valor">Git, GitHub, VS Code</tspan>
+</text></g>
+
+<!-- AGORA -->
+<g clip-path="url(#c7)"><text x="40" y="274">
+  <tspan class="secao">— AGORA</tspan><tspan class="pontos"> ————————————————————————————————————</tspan>
+</text></g>
+
+<g clip-path="url(#c8)"><text x="40" y="296">
+  <tspan class="chave">Cursando</tspan><tspan class="pontos"> .......... </tspan><tspan class="valor">Estruturas de Dados, POO, Cálculo</tspan>
+</text></g>
+
+<g clip-path="url(#c9)"><text x="40" y="318">
+  <tspan class="chave">Objetivo</tspan><tspan class="pontos"> .......... </tspan><tspan class="valor">primeiro estágio na área</tspan>
+</text></g>
+
+<!-- CURSOR -->
+<rect x="40" y="338" width="9" height="16" fill="#22D3EE" opacity="0">
+  <animate attributeName="opacity" values="0;1;1;0;0;1" keyTimes="0;0.01;0.45;0.46;0.9;1" dur="1.2s" begin="2.0s" repeatCount="indefinite"/>
+</rect>
+
+<!-- VARREDURA -->
+<rect x="0" y="-90" width="840" height="90" fill="url(#varredura)" style="mix-blend-mode:screen">
+  <animateTransform attributeName="transform" type="translate" from="0 -90" to="0 460" dur="6s" repeatCount="indefinite"/>
+</rect>
+
+<!-- BORDA -->
+<rect x="2" y="2" width="836" height="366" rx="13" fill="none" stroke="url(#borda)" stroke-width="1.6" opacity="0.7">
+  <animate attributeName="opacity" values="0.45;0.85;0.45" dur="4s" repeatCount="indefinite"/>
+</rect>
+
+</svg>
